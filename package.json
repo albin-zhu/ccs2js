@@ -1,0 +1,24 @@
+{
+  "name": "ccs2js",
+  "version": "1.0.7",
+  "description": "an utility to generate js file automatically from json file that cocostudio2.3 exported for cocos2d-js-3.7",
+  "main": "ccs2js.js",
+  "preferGlobal": "true",
+  "scripts": {
+    "test": "ccs2js"
+  },
+  "bin": {
+    "ccs2js": "ccs2js.js"
+  },
+  "dependencies": {
+    "tenjin": "^0.1.1",
+    "commander": "^2.8.1",
+    "glob": "^5.0.10"
+  },
+  "keywords": [
+    "ccs2js",
+    "cocostudio"
+  ],
+  "author": "hialbin <albinyewen@gmail.com> (http://albin.ga/cocos/ccs2js)",
+  "license": "MIT"
+}
