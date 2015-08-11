@@ -1,6 +1,6 @@
 {
   "name": "ccs2js",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "an utility to generate js file automatically from json file that cocostudio2.3 exported for cocos2d-js-3.7",
   "main": "ccs2js.js",
   "preferGlobal": "true",
