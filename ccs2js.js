@@ -280,4 +280,9 @@ var genNode = function(src, dest) {
     fs.writeFileSync(path.join(dest, n.context.Name + ".js"),n.render());
 }
 
-genNode(program.src, program.dest);
+if(!program.src || !program.dest) {
+    console.log("Please define the json path and export path, read more http://albin.ga/cocos/ccs2js/");
+    require('openurl').open("http://albin.ga/cocos/ccs2js/");
+}else{
+    genNode(program.src, program.dest);
+}

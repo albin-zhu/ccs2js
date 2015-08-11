@@ -13,7 +13,7 @@
   "dependencies": {
     "tenjin": "^0.1.1",
     "commander": "^2.8.1",
-    "glob": "^5.0.10"
+    "openurl": "^1.1.0"
   },
   "keywords": [
     "ccs2js",
