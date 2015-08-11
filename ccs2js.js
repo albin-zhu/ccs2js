@@ -7,12 +7,13 @@
 
 var tenjin = require('tenjin');
 var path = require('path');
+require('fs');
 var program = require('commander');
 var fs = require('fs');
 var template = "tenjin";
  
 program
-    .version('0.0.1')
+    .version(JSON.parse(fs.readFileSync(path.resolve(__dirname,"package.json"))).version)
     .option('-s, --src <n>', '指定的json文件')
     .option('-d, --dest <n>', '生成文件的路径')
     .parse(process.argv);

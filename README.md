@@ -14,6 +14,8 @@ npm install ccs2js -g
 ```
 
 # Usage
+[ccs2js, Read more+](http://albin.ga/cocos/ccs2js)
+
 切换到cocostudio资源导出目录,里边应该包含若干个json文件,cocostduio可以设置导出json格式的文件.
 ```
 cd /path/to/cocostudio/export/res
