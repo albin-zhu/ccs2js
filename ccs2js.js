@@ -213,7 +213,9 @@ var ScrollView = Node.extend({
 var ImageView = Node.extend({
     template : 'imageview.js'
 });
-var LoadingBar = Node.extend();
+var LoadingBar = Node.extend({
+    template : "loadingbar.js"
+});
 var Slider = Node.extend({
     template : "slider.js"
 });

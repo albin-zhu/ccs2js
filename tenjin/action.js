@@ -232,7 +232,9 @@ action.addTimeline(t);
 <?js }); ?>
 var self = this;
 action.setFrameEventCallFunc(function(e){
-	self.puremvc_event.call(this, e._event, e);
+    if(e._event && e._event.length > 0) {
+	cc.eventManager.dispatchEvent(new cc.EventCustom(e._event));
+    }
 });
 this.timeline = action;
 <?js var animationlist = it.anims;  animationlist.forEach(function(data){ ?>

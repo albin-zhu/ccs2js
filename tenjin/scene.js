@@ -16,13 +16,12 @@ var #{it.Name} = cc.#{it.Class}.extend({
 	}
 	this._super();
 	this.runAction(this.timeline);
-	this.timeline.gotoFrameAndPlay(0);
     },
-    playAnim : function(animName, loop) {
+    playAnim : function(animName, loop, reverse) {
 	loop = loop || false;
 	var info = this.anims[animName];
 	if(info){
-	    this.timeline.gotoFrameAndPlay(info[0] || 0, info[1] || 0, this.timeline.getCurrentFrame(), loop);
+	    this.timeline.gotoFrameAndPlay(info[0] || 0, info[1] - 1 || 0, reverse ? info[0] : this.timeline.getCurrentFrame(), loop);
 	}
     }
 });
