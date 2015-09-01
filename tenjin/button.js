@@ -99,16 +99,20 @@ extensionData.setActionTag(${actionTag});
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
 var layoutComponent = ccui.LayoutComponent.bindLayoutComponent(#{it.Name});
-layoutComponent.setPositionPercentXEnabled(#{it.PositionPercentXEnable || false});
-layoutComponent.setPositionPercentYEnabled(#{it.PositionPercentYEnable || false});
-<?js if(it.PrePosition != null){ ?>
+<?js if (it.PositionPercentXEnable && it.PrePosition) { ?>
+layoutComponent.setPositionPercentXEnabled(true);
 layoutComponent.setPositionPercentX(#{it.PrePosition.X || 0});
+<?js } ?>
+<?js if (it.PositionPercentYEnable && it.PrePosition) { ?>
+layoutComponent.setPositionPercentYEnabled(true);
 layoutComponent.setPositionPercentY(#{it.PrePosition.Y || 0});
 <?js } ?>
-layoutComponent.setPercentWidthEnabled( #{it.PercentWidthEnable || false});
-layoutComponent.setPercentHeightEnabled(#{it.PercentHeightEnable || false});
-<?js if(it.PreSize != null){ ?>
+<?js if(it.PercentWidthEnable && it.PreSize) { ?>
+layoutComponent.setPercentWidthEnabled(true);
 layoutComponent.setPercentWidth(#{it.PreSize.X  || 0});
+<?js } ?>
+<?js if(it.PercentHeightEnable && it.PreSize) { ?>
+layoutComponent.setPercentHeightEnabled(true);
 layoutComponent.setPercentHeight(#{it.PreSize.Y  || 0});
 <?js } ?>
 layoutComponent.setStretchWidthEnabled(#{it.StretchWidthEnable|| false});
