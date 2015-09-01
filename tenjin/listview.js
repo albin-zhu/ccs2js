@@ -134,7 +134,7 @@ var verticalType = it.VerticalType === undefined ? "Align_Left" : it.VerticalTyp
 var horizontalType = it.HorizontalType === undefined ? "Align_Top" : it.HorizontalType;
 var dihandle1 = "";
 var dihandle2 = "";
-if(!directionType){
+if(directionType && directionType != "Vertical"){
     dihandle1 = "setDirection(ccui.ScrollView.DIR_HORIZONTAL);";
     if(verticalType == "Align_Bottom")
        dihandle2 = "setGravity(ccui.ListView.GRAVITY_BOTTOM);";

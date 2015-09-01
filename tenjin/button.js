@@ -10,10 +10,10 @@
 #{it.Name}.loadTextureNormal("res/#{it.NormalFileData.Path}", 0);
 <?js } ?>
 <?js if (it.PressedFileData && it.PressedFileData.Type == "PlistSubImage") { ?> 
-#{it.Name}.loadTextureNormal("#{it.PressedFileData.Path}", 1);
+#{it.Name}.loadTexturePressedl("#{it.PressedFileData.Path}", 1);
 <?js }?>
 <?js if (it.PressedFileData && it.PressedFileData.Type != "PlistSubImage") { ?>
-#{it.Name}.loadTextureNormal("res/#{it.PressedFileData.Path}", 0);
+#{it.Name}.loadTexturePressed("res/#{it.PressedFileData.Path}", 0);
 <?js }?>
 <?js if (it.DisabledFileData && it.DisabledFileData.Type == "PlistSubImage") { ?> 
 #{it.Name}.loadTextureDisabled("#{it.DisabledFileData.Path}", 1);
