@@ -94,18 +94,10 @@ layoutComponent.setVerticalEdge(ccui.LayoutComponent.verticalEdge.CENTER);
 <?js if(!it.VerticalEdge) {?>
 layoutComponent.setVerticalEdge(ccui.LayoutComponent.verticalEdge.NONE);
 <?js } ?>
-<?js if(it.TopMargin) { ?>
-layoutComponent.setTopMargin(#{it.TopMargin});
-<?js } ?>
-<?js if(it.BottomMargin) { ?>
-layoutComponent.setBottomMargin( #{it.BottomMargin});
-<?js } ?>
-<?js if(it.LeftMargin) { ?>
-layoutComponent.setLeftMargin(#{it.LeftMargin});
-<?js } ?>
-<?js if(it.RightMargin) { ?>
-layoutComponent.setRightMargin(#{it.RightMargin});
-<?js } ?>
+layoutComponent.setTopMargin(#{it.TopMargin || 0});
+layoutComponent.setBottomMargin( #{it.BottomMargin || 0});
+layoutComponent.setLeftMargin(#{it.LeftMargin || 0});
+layoutComponent.setRightMargin(#{it.RightMargin || 0});
 layoutComponent.refreshLayout();
 //attr end
 //custom
@@ -164,10 +156,10 @@ if(colorType == 1){ ?>
 <?js } ?>
 <?js var fileData = it.FileData;
 if(it.FileData) { ?>
-<?js if (it.FileData.Type == "PlistSubImage") { ?> 
+<?js if (it.FileData.Type == "MarkedSubImage") { ?> 
 #{it.Name}.setBackGroundImage("#{it.FileData.Path}", 1);
 <?js }?>
-<?js if (it.FileData.Type != "PlistSubImage") { ?>
+<?js if (it.FileData.Type != "MarkedSubImage") { ?>
 #{it.Name}.setBackGroundImage("res/#{it.FileData.Path}", 0);
 <?js } ?>
 <?js } ?>

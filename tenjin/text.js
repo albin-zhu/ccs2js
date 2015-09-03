@@ -94,18 +94,10 @@ layoutComponent.setVerticalEdge(ccui.LayoutComponent.verticalEdge.CENTER);
 <?js if(!it.VerticalEdge) {?>
 layoutComponent.setVerticalEdge(ccui.LayoutComponent.verticalEdge.NONE);
 <?js } ?>
-<?js if(it.TopMargin) { ?>
-layoutComponent.setTopMargin(#{it.TopMargin});
-<?js } ?>
-<?js if(it.BottomMargin) { ?>
-layoutComponent.setBottomMargin( #{it.BottomMargin});
-<?js } ?>
-<?js if(it.LeftMargin) { ?>
-layoutComponent.setLeftMargin(#{it.LeftMargin});
-<?js } ?>
-<?js if(it.RightMargin) { ?>
-layoutComponent.setRightMargin(#{it.RightMargin});
-<?js } ?>
+layoutComponent.setTopMargin(#{it.TopMargin || 0});
+layoutComponent.setBottomMargin( #{it.BottomMargin || 0});
+layoutComponent.setLeftMargin(#{it.LeftMargin || 0});
+layoutComponent.setRightMargin(#{it.RightMargin || 0});
 layoutComponent.refreshLayout();
 //attr end
 <?js var touchScaleEnabled = it.TouchScaleChangeAble;

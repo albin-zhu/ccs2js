@@ -1,8 +1,8 @@
 #{it.defineType + it.Name} = new cc.Sprite();
-<?js if (it.FileData.Type == "PlistSubImage") { ?> 
+<?js if (it.FileData.Type == "MarkedSubImage") { ?> 
 var spriteFrame = cc.spriteFrameCache.getSpriteFrame("#{it.FileData.Path}");
 #{it.Name}.setSpriteFrame(spriteFrame);<?js }?>
-<?js if (it.FileData.Type != "PlistSubImage") { ?>#{it.Name}.setTexture("res/#{it.FileData.Path}");<?js } ?>
+<?js if (it.FileData.Type != "MarkedSubImage") { ?>#{it.Name}.setTexture("res/#{it.FileData.Path}");<?js } ?>
 <?js if (it.FlipY) { ?>#{it.Name}.setFlippedY(true);<?js } ?>
 <?js if (it.FlipX) { ?>#{it.Name}.setFlippedX(true);<?js } ?>
 <?js if (it.Position) { ?>
