@@ -1,6 +1,8 @@
 // file nmae : #{it.Name}.js
 // auto generated, do not modify this file, you can extend this to add new features
-var #{it.Name} = cc.#{it.Class}.extend({
+
+var auto = auto || {};
+auto.#{it.Name} = cc.#{it.Class}.extend({
     timeline : null,
     anims : {},
     ctor : function() {
@@ -25,10 +27,5 @@ var #{it.Name} = cc.#{it.Class}.extend({
 	}
     }
 });
-#{it.Name}.resources = [
-<?js for(var i = 0; i < it.resources.length; i++) { ?>
-    "res/#{it.resources[i]}" <?js if(i != it.resources.length - 1) { ?>,<?js } ?>						    
-<?js } ?>
-];
-#{it.Name}.extend = cc.Class.extend;
+auto.#{it.Name}.extend = cc.Class.extend;
 
