@@ -72,25 +72,7 @@ extensionData.setActionTag(${actionTag});
 <?js  var callBackName = it.CallBackName;  if(callBackName != null) {?>
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
-var layoutComponent = ccui.LayoutComponent.bindLayoutComponent(#{it.Name});
-<?js if (it.PositionPercentXEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentXEnabled(true);
-layoutComponent.setPositionPercentX(#{it.PrePosition.X || 0});
-<?js } ?>
-<?js if (it.PositionPercentYEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentYEnabled(true);
-layoutComponent.setPositionPercentY(#{it.PrePosition.Y || 0});
-<?js } ?>
-<?js if(it.PercentWidthEnable && it.PreSize) { ?>
-layoutComponent.setPercentWidthEnabled(true);
-layoutComponent.setPercentWidth(#{it.PreSize.X  || 0});
-<?js } ?>
-<?js if(it.PercentHeightEnable && it.PreSize) { ?>
-layoutComponent.setPercentHeightEnabled(true);
-layoutComponent.setPercentHeight(#{it.PreSize.Y  || 0});
-<?js } ?>
-layoutComponent.setStretchWidthEnabled(#{it.StretchWidthEnable|| false});
-layoutComponent.setStretchHeightEnabled(#{it.StretchHeightEnable|| false});
+var layoutComponent = MyLayout.bindLayoutComponent(#{it.Name});
 
 <?js if(it.HorizontalEdge == "LeftEdge") {?>
 layoutComponent.setHorizontalEdge(ccui.LayoutComponent.horizontalEdge.LEFT);

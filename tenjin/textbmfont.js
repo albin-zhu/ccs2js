@@ -1,4 +1,7 @@
 #{it.defineType + it.Name} = new ccui.TextBMFont();
+<?js if(it.parent) {?>
+#{it.parent}.addChild(#{it.Name});
+<?js } ?>
 // attr
 #{it.Name}.setCascadeColorEnabled(true);
 #{it.Name}.setCascadeOpacityEnabled(true);
@@ -50,26 +53,16 @@ extensionData.setActionTag(${actionTag});
 <?js  var callBackName = it.CallBackName;  if(callBackName != null) {?>
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
-var layoutComponent = ccui.LayoutComponent.bindLayoutComponent(#{it.Name});
-<?js if (it.PositionPercentXEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentXEnabled(true);
-layoutComponent.setPositionPercentX(#{it.PrePosition.X || 0});
+<?js var text =it.LabelText;
+if(text != null) { ?>
+#{it.Name}.setString("${text}");
 <?js } ?>
-<?js if (it.PositionPercentYEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentYEnabled(true);
-layoutComponent.setPositionPercentY(#{it.PrePosition.Y || 0});
-<?js } ?>
-<?js if(it.PercentWidthEnable && it.PreSize) { ?>
-layoutComponent.setPercentWidthEnabled(true);
-layoutComponent.setPercentWidth(#{it.PreSize.X  || 0});
-<?js } ?>
-<?js if(it.PercentHeightEnable && it.PreSize) { ?>
-layoutComponent.setPercentHeightEnabled(true);
-layoutComponent.setPercentHeight(#{it.PreSize.Y  || 0});
-<?js } ?>
-layoutComponent.setStretchWidthEnabled(#{it.StretchWidthEnable|| false});
-layoutComponent.setStretchHeightEnabled(#{it.StretchHeightEnable|| false});
+<?js var path = "res/" + it.LabelBMFontFile_CNB.Path; ?>
+if(!cc.loader.getRes("${path}"))
+    cc.log("%s need to be pre loaded", "${path}");
+#{it.Name}.setFntFile("${path}");
 
+var layoutComponent = MyLayout.bindLayoutComponent(#{it.Name});
 <?js if(it.HorizontalEdge == "LeftEdge") {?>
 layoutComponent.setHorizontalEdge(ccui.LayoutComponent.horizontalEdge.LEFT);
 <?js } ?>
@@ -98,20 +91,9 @@ layoutComponent.setTopMargin(#{it.TopMargin || 0});
 layoutComponent.setBottomMargin( #{it.BottomMargin || 0});
 layoutComponent.setLeftMargin(#{it.LeftMargin || 0});
 layoutComponent.setRightMargin(#{it.RightMargin || 0});
-layoutComponent.refreshLayout();
 //attr end
-<?js var text =it.LabelText;
-if(text != null) { ?>
-#{it.Name}.setString("${text}");
-<?js } ?>
-<?js var path = "res/" + it.LabelBMFontFile_CNB.Path; ?>
-if(!cc.loader.getRes("${path}"))
-    cc.log("%s need to be pre loaded", "${path}");
-#{it.Name}.setFntFile("${path}");
+layoutComponent.refreshLayout();
 // custom end
 // common
 #{it.children}
-<?js if(it.parent) {?>
-#{it.parent}.addChild(#{it.Name});
-<?js } ?>
 // #{it.Name} end

@@ -1,4 +1,7 @@
 #{it.defineType + it.Name} = new ccui.TextField();
+<?js if(it.parent) {?>
+#{it.parent}.addChild(#{it.Name});
+<?js } ?>
 <?js   var passwordEnabled = it.PasswordEnable;
         if(passwordEnabled){ ?>
  #{it.Name}.setPasswordEnabled(true); 
@@ -77,26 +80,25 @@ extensionData.setActionTag(${actionTag});
 <?js  var callBackName = it.CallBackName;  if(callBackName != null) {?>
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
-var layoutComponent = ccui.LayoutComponent.bindLayoutComponent(#{it.Name});
-<?js if (it.PositionPercentXEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentXEnabled(true);
-layoutComponent.setPositionPercentX(#{it.PrePosition.X || 0});
+//attr end
+// custom
+<?js        var text = it.LabelText;
+        if(text != null) { ?>
+            #{it.Name}.setString("${text}");
 <?js } ?>
-<?js if (it.PositionPercentYEnable && it.PrePosition) { ?>
-layoutComponent.setPositionPercentYEnabled(true);
-layoutComponent.setPositionPercentY(#{it.PrePosition.Y || 0});
+        #{it.Name}.setUnifySizeEnabled(false);
+        #{it.Name}.ignoreContentAdaptWithSize(false);
+<?js         var color = it.color;
+        if(color != null) { ?>
+            #{it.Name}.setTextColor(${color});
 <?js } ?>
-<?js if(it.PercentWidthEnable && it.PreSize) { ?>
-layoutComponent.setPercentWidthEnabled(true);
-layoutComponent.setPercentWidth(#{it.PreSize.X  || 0});
-<?js } ?>
-<?js if(it.PercentHeightEnable && it.PreSize) { ?>
-layoutComponent.setPercentHeightEnabled(true);
-layoutComponent.setPercentHeight(#{it.PreSize.Y  || 0});
-<?js } ?>
-layoutComponent.setStretchWidthEnabled(#{it.StretchWidthEnable|| false});
-layoutComponent.setStretchHeightEnabled(#{it.StretchHeightEnable|| false});
+        if (!#{it.Name}.isIgnoreContentAdaptWithSize()){
+	    #{it.Name}.setContentSize(cc.size(#{it.Size.X || 0}, #{it.Size.Y || 0}));
+                       if (cc.sys.isNative)
+                #{it.Name}.getVirtualRenderer().setLineBreakWithoutSpace(true);
+        }
 
+var layoutComponent = MyLayout.bindLayoutComponent(#{it.Name});
 <?js if(it.HorizontalEdge == "LeftEdge") {?>
 layoutComponent.setHorizontalEdge(ccui.LayoutComponent.horizontalEdge.LEFT);
 <?js } ?>
@@ -126,27 +128,7 @@ layoutComponent.setBottomMargin( #{it.BottomMargin || 0});
 layoutComponent.setLeftMargin(#{it.LeftMargin || 0});
 layoutComponent.setRightMargin(#{it.RightMargin || 0});
 layoutComponent.refreshLayout();
-//attr end
-// custom
-<?js        var text = it.LabelText;
-        if(text != null) { ?>
-            #{it.Name}.setString("${text}");
-<?js } ?>
-        #{it.Name}.setUnifySizeEnabled(false);
-        #{it.Name}.ignoreContentAdaptWithSize(false);
-<?js         var color = it.color;
-        if(color != null) { ?>
-            #{it.Name}.setTextColor(${color});
-<?js } ?>
-        if (!#{it.Name}.isIgnoreContentAdaptWithSize()){
-	    #{it.Name}.setContentSize(cc.size(#{it.Size.X || 0}, #{it.Size.Y || 0}));
-                       if (cc.sys.isNative)
-                #{it.Name}.getVirtualRenderer().setLineBreakWithoutSpace(true);
-        }
 // custom end
 // common
 #{it.children}
-<?js if(it.parent) {?>
-#{it.parent}.addChild(#{it.Name});
-<?js } ?>
 // #{it.Name} end

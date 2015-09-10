@@ -58,7 +58,7 @@ extensionData.setActionTag(${actionTag});
 <?js  var callBackName = it.CallBackName;  if(callBackName != null) {?>
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
-var layoutComponent = ccui.LayoutComponent.bindLayoutComponent(#{it.Name});
+var layoutComponent = MyLayout.bindLayoutComponent(#{it.Name});
 layoutComponent.setPositionPercentXEnabled(#{it.PositionPercentXEnable || false});
 layoutComponent.setPositionPercentYEnabled(#{it.PositionPercentYEnable || false});
 <?js if(it.PrePosition != null){ ?>

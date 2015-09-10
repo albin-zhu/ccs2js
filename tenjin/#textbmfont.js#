@@ -1,4 +1,4 @@
-#{it.defineType + it.Name} = new ccui.Text();
+#{it.defineType + it.Name} = new ccui.TextBMFont();
 <?js if(it.parent) {?>
 #{it.parent}.addChild(#{it.Name});
 <?js } ?>
@@ -53,63 +53,6 @@ extensionData.setActionTag(${actionTag});
 <?js  var callBackName = it.CallBackName;  if(callBackName != null) {?>
 #{it.Name}.setCallbackName("${callBackName}");
 <?js } ?>
-//attr end
-<?js var touchScaleEnabled = it.TouchScaleChangeAble;
-if(touchScaleEnabled) {?>
-#{it.Name}.setTouchScaleChangeEnabled(${touchScaleEnabled});
-<?js } ?>
-<?js var text =it.LabelText;
-if(text != null) { ?>
-#{it.Name}.setString("${text}");
-<?js } ?>
-<?js var fontSize =it.FontSize;
-        if(fontSize != null){ ?>
-#{it.Name}.setFontSize(${fontSize});
-<?js } ?>
-<?js var fontName =it.FontName;
-        if(fontName != null) { ?>
-#{it.Name}.setFontName(${fontName});
-<?js } ?>
-<?js 
-        var areaWidth =it.AreaWidth;
-        var areaHeight =it.areaHeight;
-        if(areaWidth && areaHeight){ ?>
-#{it.Name}.setTextAreaSize(cc.size(${areaWidth}, ${areaHeight}));
-<?js } ?>
-<?js 
-        var h_alignment =it.HorizontalAlignmentType || "HT_Left";
-        switch(h_alignment){
-            case "HT_Right": 
-                h_alignment = 2; break;
-            case "HT_Center":
-                h_alignment = 1; break;
-            case "HT_Left":
-            default:
-                h_alignment = 0;
-        }?>
-#{it.Name}.setTextHorizontalAlignment(${h_alignment});
-<?js
-        var v_alignment =it.VerticalAlignmentType || "VT_Top";
-        switch(v_alignment){
-            case "VT_Bottom":
-                v_alignment = 2; break;
-            case "VT_Center":
-                v_alignment = 1; break;
-            case "VT_Top":
-            default:
-                v_alignment = 0;
-        }?>
-#{it.Name}.setTextVerticalAlignment(${v_alignment});
-<?js
-        var isCustomSize =it.IsCustomSize;
-        if(isCustomSize != null) { ?>
-#{it.Name}.ignoreContentAdaptWithSize(${!isCustomSize});
-<?js } ?>
-<?js
-        if(!isCustomSize){?>
-#{it.Name}.setContentSize(cc.size(#{it.Size.X || 0}, #{it.Size.Y || 0}));
-<?js } ?>
-#{it.Name}.setUnifySizeEnabled(false);
 var layoutComponent = MyLayout.bindLayoutComponent(#{it.Name});
 
 <?js if(it.HorizontalEdge == "LeftEdge") {?>
@@ -141,7 +84,17 @@ layoutComponent.setBottomMargin( #{it.BottomMargin || 0});
 layoutComponent.setLeftMargin(#{it.LeftMargin || 0});
 layoutComponent.setRightMargin(#{it.RightMargin || 0});
 layoutComponent.refreshLayout();
+//attr end
+<?js var text =it.LabelText;
+if(text != null) { ?>
+#{it.Name}.setString("${text}");
+<?js } ?>
+<?js var path = "res/" + it.LabelBMFontFile_CNB.Path; ?>
+if(!cc.loader.getRes("${path}"))
+    cc.log("%s need to be pre loaded", "${path}");
+#{it.Name}.setFntFile("${path}");
 // custom end
 // common
 #{it.children}
 // #{it.Name} end
+<
