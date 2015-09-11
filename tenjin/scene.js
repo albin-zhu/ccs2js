@@ -13,9 +13,6 @@ auto.#{it.Name} = cc.#{it.Class}.extend({
 	return true;
     },
     onEnter: function(e) {
-	if(#{it.Name}.map) {
-	    #{it.Name}.map(this);
-	}
 	this._super();
 	this.runAction(this.timeline);
     },

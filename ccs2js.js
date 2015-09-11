@@ -11,7 +11,7 @@ require('fs');
 var program = require('commander');
 var fs = require('fs');
 var template = "tenjin";
- 
+
 program
     .version(JSON.parse(fs.readFileSync(path.resolve(__dirname,"package.json"))).version)
     .option('-s, --src <n>', '指定的json文件')
@@ -55,7 +55,7 @@ cc.Class.extend = function (prop) {
                     return ret;
                 };
             })(name, prop[name]) :
-            prop[name];
+        prop[name];
     }
     function Class() {
         if (!initializing) {
@@ -286,5 +286,20 @@ if(!program.src || !program.dest) {
     console.log("Please define the json path and export path, read more http://albin.ga/cocos/ccs2js/");
     require('openurl').open("http://albin.ga/cocos/ccs2js/");
 }else{
-    genNode(program.src, program.dest);
+    var src = program.src;
+    if(src.match(/\w+\.json/))
+    {
+	console.log("generate " + src);
+	genNode(src, program.dest);
+    }
+    else {
+	files = fs.readdirSync(src);
+	files.forEach(function(item) {
+	    if(item.match(/\w+\.json/))
+	    {
+		console.log("generate " + src);
+		genNode(path.join(src, item), program.dest);
+	    }
+	});
+    }
 }
